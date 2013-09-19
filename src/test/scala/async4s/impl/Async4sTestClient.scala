@@ -1,10 +1,10 @@
-package async4s.engine
+package async4s.impl
 
 import com.ning.http.client.AsyncHttpClient
 import com.ning.http.client.AsyncHttpClientConfig
 import scala.concurrent.ExecutionContext
 
-object Async4sEngine {
+object Async4sTestClient {
 
   private val configBuilder = new AsyncHttpClientConfig.Builder()
 
@@ -17,4 +17,6 @@ object Async4sEngine {
   implicit val ec = ExecutionContext.Implicits.global
   implicit val httpClient = new AsyncHttpClient()
 
+  def close() = httpClient.close()
+  
 }
