@@ -32,7 +32,7 @@ Easiest way to get full content by url:
     // yahoo should include("yahoo")
 ```
 
-Also you can use builtin response type modifiers (```STRING```, ```BYTES``` or ```STREAM```):
+Also you can use builtin response type modifiers (```STRING```, ```BYTES```, ```STREAM``` or ```RAW```):
 
 ```
     import Async4sDSL._
@@ -99,4 +99,22 @@ You can define own response types throught subclassing from ```ResponseType[T]``
 
     // type of response is MyType
     // response.body should include("google")
+```
+
+Using com.ning.http.client.Response
+===================================
+
+You can use ```RAW``` response type to get ```com.ning.http.client.Response```:
+
+```
+    import Async4sDSL._
+
+    implicit val ec = ExecutionContext.Implicits.global
+    implicit val httpClient = new AsyncHttpClient()
+
+    val google =
+      get("http://google.com" as RAW)
+      
+    // google.getContentType should equal ("text/html; charset=UTF-8")
+    // google.getResponseBody should include("google")
 ```
