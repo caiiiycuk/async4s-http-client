@@ -1,10 +1,10 @@
-package async4s.test
+package com.github.caiiiycuk.async4s.test
 
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
 
-import async4s.dsl.Async4sDSL
-import async4s.impl.Async4sTestClient
+import com.github.caiiiycuk.async4s.dsl.Async4sDSL
+import com.github.caiiiycuk.async4s.impl.Async4sTestClient
 
 class ResponseTypeTest extends FlatSpec with ShouldMatchers {
 
@@ -13,7 +13,7 @@ class ResponseTypeTest extends FlatSpec with ShouldMatchers {
   behavior of "response type"
 
   it should "work with custom response types" in {
-    import async4s.response.ResponseType
+    import com.github.caiiiycuk.async4s.response.ResponseType
     import com.ning.http.client.Response
     import Async4sDSL._
 

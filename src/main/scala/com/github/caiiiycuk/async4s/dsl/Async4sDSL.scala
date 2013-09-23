@@ -1,4 +1,4 @@
-package async4s.dsl
+package com.github.caiiiycuk.async4s.dsl
 
 import scala.concurrent.Await
 import scala.concurrent.ExecutionContext
@@ -6,14 +6,14 @@ import scala.concurrent.Future
 import scala.concurrent.duration.Duration
 import scala.concurrent.future
 import com.ning.http.client.AsyncHttpClient
-import async4s.request.RequestUrl
+import com.github.caiiiycuk.async4s.request.RequestUrl
 
 object Async4sDSL {
   import scala.concurrent.duration._
 
-  object STRING extends async4s.response.STRING
-  object BYTES extends async4s.response.BYTES
-  object STREAM extends async4s.response.STREAM
+  object STRING extends com.github.caiiiycuk.async4s.response.STRING
+  object BYTES extends com.github.caiiiycuk.async4s.response.BYTES
+  object STREAM extends com.github.caiiiycuk.async4s.response.STREAM
 
   implicit def string2RequestUrl(url: String): RequestUrl[String] =
     new RequestUrl(url, STRING)

@@ -1,4 +1,4 @@
-package async4s.impl
+package com.github.caiiiycuk.async4s.impl
 
 import com.ning.http.client.AsyncHttpClient
 import com.ning.http.client.AsyncHttpClientConfig

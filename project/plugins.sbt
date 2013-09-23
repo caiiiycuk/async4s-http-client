@@ -1,3 +1,5 @@
+addSbtPlugin("com.typesafe.sbt" % "sbt-pgp" % "0.8")
+
 // Run sbt/sbt eclipse to create Eclipse project file
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.3.0")
 

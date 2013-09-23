@@ -1,7 +1,7 @@
-package async4s.request
+package com.github.caiiiycuk.async4s.request
 
-import async4s.response.ResponseType
 import com.ning.http.client.Response
+import com.github.caiiiycuk.async4s.response.ResponseType
 
 case class RequestUrl[T](url: String, rType: ResponseType[T]) {
   

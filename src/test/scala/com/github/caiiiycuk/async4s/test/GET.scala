@@ -1,10 +1,10 @@
-package async4s.test
+package com.github.caiiiycuk.async4s.test
 
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
-import async4s.dsl.Async4sDSL
-import async4s.impl.Async4sTestClient
-import async4s.request.RequestUrl
+import com.github.caiiiycuk.async4s.dsl.Async4sDSL
+import com.github.caiiiycuk.async4s.impl.Async4sTestClient
+import com.github.caiiiycuk.async4s.request.RequestUrl
 
 class GET extends FlatSpec with ShouldMatchers {
 

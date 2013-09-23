@@ -1,4 +1,4 @@
-package async4s.response
+package com.github.caiiiycuk.async4s.response
 
 import com.ning.http.client.Response
 import java.io.InputStream
