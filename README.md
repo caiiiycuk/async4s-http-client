@@ -2,6 +2,17 @@ async4s-http-client
 ===================
 A scala dsl on top of java [async-http-client](https://github.com/AsyncHttpClient/async-http-client)
 
+Using with SBT
+==============
+
+Add dependency to build.sbt:
+```
+resolvers ++= Seq("snapshots"     at "http://oss.sonatype.org/content/repositories/snapshots",
+                "releases"        at "http://oss.sonatype.org/content/repositories/releases")
+                
+libraryDependencies += "com.github.caiiiycuk" %% "async4s-http-client" % "0.1-SNAPSHOT" % "compile"
+```
+
 GET
 ===
 
