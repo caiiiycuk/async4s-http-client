@@ -4,7 +4,7 @@ version := "0.1-SNAPSHOT"
 
 scalaVersion := "2.10.2"
 
-organization := "com.github.caiiiycuk.async4s"
+organization := "com.github.caiiiycuk"
 
 
 resolvers ++= Seq("snapshots"     at "http://oss.sonatype.org/content/repositories/snapshots",
