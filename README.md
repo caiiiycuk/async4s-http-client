@@ -100,8 +100,8 @@ You can specify request parameters throught operator ```~```:
             ~ ("array" -> Seq(1, 2, 3)))
 ```
 
-When you use post request parameters will be passed in request body. In othre way when you use
-get request parameters will be passed in request uri (for this example uri will be 
+When you use POST method request parameters will be passed in request body. When you use
+GET method request parameters will be passed in request uri (for this example uri will be 
 "http://url?user=caiiiycuk&token=abcdedwqsdq&array=1&array=2&array=3").
 
 Custom response parser
