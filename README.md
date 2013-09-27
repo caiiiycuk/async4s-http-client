@@ -10,7 +10,7 @@ Add dependency to build.sbt:
 resolvers ++= Seq("snapshots"     at "http://oss.sonatype.org/content/repositories/snapshots",
                 "releases"        at "http://oss.sonatype.org/content/repositories/releases")
                 
-libraryDependencies += "com.github.caiiiycuk" %% "async4s-http-client" % "0.1-SNAPSHOT" % "compile"
+libraryDependencies += "com.github.caiiiycuk" %% "async4s-http-client" % "0.2-SNAPSHOT" % "compile"
 ```
 
 GET
@@ -72,6 +72,37 @@ Also you can pass Seq of request to ```get``` method:
     // type of responses is Seq[String]
     // because we pass Seq[RequestUrl[String]]
 ```
+
+POST
+====
+
+You can send post requests absolute in the same way as get, through methods ```post``` and ```async post```.
+```
+    import Async4sDSL._
+
+    implicit val ec = ExecutionContext.Implicits.global
+    implicit val httpClient = new AsyncHttpClient()
+
+    val response =
+      post("http://url")
+```
+
+Working with parameters
+=======================
+
+You can specify request parameters throught operator ```~```:
+
+```
+    val content =
+        post("http://url"
+            ~ ("user" -> "caiiiycuk")
+            ~ ("token" -> "abcdedwqsdq")
+            ~ ("array" -> Seq(1, 2, 3)))
+```
+
+When you use post request parameters will be passed in request body. In othre way when you use
+get request parameters will be passed in request uri (for this example uri will be 
+"http://url?user=caiiiycuk&token=abcdedwqsdq&array=1&array=2&array=3").
 
 Custom response parser
 ======================
