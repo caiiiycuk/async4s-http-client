@@ -82,5 +82,11 @@ class GET extends FlatSpec with ShouldMatchers {
     responses(3) should include("duckduckgo")
     responses(4) should include("yandex")
   }
+  
+  it should "GET with RAW response type" in {
+    val response = get("http://google.com" as RAW)
+    
+    response.getContentType() should equal ("text/html; charset=UTF-8")
+  }
 
 }
