@@ -12,12 +12,11 @@ case class RequestParamKey(key: String) {
 
 case class RequestParam(key: String, value: Any)
 
-case class RequestUrl[T](url: String, rType: ResponseType[T]) {
-  
-  lazy val params = new ListBuffer[RequestParam]
+case class RequestUrl[T](url: String, rType: ResponseType[T], 
+    params: ListBuffer[RequestParam] = new ListBuffer[RequestParam]) {
   
   def as[T2](rType: ResponseType[T2]) = {
-    new RequestUrl[T2](url, rType)
+    new RequestUrl[T2](url, rType, params)
   }
   
   def ~(param: RequestParam) = {
