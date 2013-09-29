@@ -26,14 +26,14 @@ GET
 
 Easiest way to get full content by url:
 
-```
+```scala
     import Async4sDSL._
 
     implicit val ec = ExecutionContext.Implicits.global
     implicit val httpClient = new AsyncHttpClient()
 
     val (google, bing, yahoo) =
-      get("http://google.com", "http://www.bing.com", "http://www.yahoo.com")
+      get("http://www.google.com", "http://www.bing.com", "http://www.yahoo.com")
       
     // google should include("google")
     // bing should include("bing")
@@ -44,14 +44,14 @@ Easiest way to get full content by url:
 
 Also you can use builtin response type modifiers (```STRING```, ```BYTES```, ```STREAM``` or ```RAW```):
 
-```
+```scala
     import Async4sDSL._
 
     implicit val ec = ExecutionContext.Implicits.global
     implicit val httpClient = new AsyncHttpClient()
 
     val (google, bing, yahoo) =
-      get("http://google.com" AS STRING, 
+      get("http://www.google.com" AS STRING, 
           "http://www.bing.com" AS BYTES, 
           "http://www.yahoo.com" AS STREAM)
     
@@ -68,14 +68,14 @@ when all contents are downloaded. Also you can use async_get to download content
 
 Also you can pass Seq of request to ```get``` method:
 
-```
+```scala
     import Async4sDSL._
 
     implicit val ec = ExecutionContext.Implicits.global
     implicit val httpClient = new AsyncHttpClient()
 
     val responses = get(Seq[RequestUrl[String]](
-      "http://google.com",
+      "http://www.google.com",
       "http://www.bing.com",
       "http://www.yahoo.com",
       "https://duckduckgo.com/",
@@ -91,7 +91,7 @@ POST
 ====
 
 You can send post requests absolute in the same way as get, through methods ```post``` and ```async post```.
-```
+```scala
     import Async4sDSL._
 
     implicit val ec = ExecutionContext.Implicits.global
@@ -108,7 +108,7 @@ Working with parameters
 
 You can specify request parameters throught operator ```~```:
 
-```
+```scala
     val content =
         post("http://url"
             ~ ("user" -> "caiiiycuk")
@@ -125,7 +125,7 @@ Custom response parsers
 
 You can define own response types throught subclassing from ```ResponseType[T]```:
 
-```
+```scala
     import async4s.response.ResponseType
     import com.ning.http.client.Response
     import Async4sDSL._
@@ -142,7 +142,7 @@ You can define own response types throught subclassing from ```ResponseType[T]``
     }
 
     val (response) =
-      get("http://google.com" as MY_TYPE)
+      get("http://www.google.com" as MY_TYPE)
 
     // type of response is MyType
     // response.body should include("google")
@@ -155,7 +155,7 @@ Getting raw response
 
 You can use ```RAW``` response type to get ```com.ning.http.client.Response```:
 
-```
+```scala
     import Async4sDSL._
 
     implicit val ec = ExecutionContext.Implicits.global
@@ -175,7 +175,7 @@ Configuring AsyncHttpClient
 
 Usually only one http client needed for whole application. For this case we should use singleton object with instance of ```AsyncHttpClient```:
 
-```
+```scala
     private object HttpClient {
       private val configBuilder = new AsyncHttpClientConfig.Builder()
 
@@ -191,7 +191,7 @@ Usually only one http client needed for whole application. For this case we shou
 ```
 
 Now we can define a trait with implicit variable of ExecutionContext and AsyncHttpClient:
-```
+```scala
     trait WS {
       implicit val ec = ExecutionContext.Implicits.global
       implicit val httpClient = HttpClient.client
@@ -199,7 +199,7 @@ Now we can define a trait with implicit variable of ExecutionContext and AsyncHt
 ```
 
 After that we can simply write:
-```
+```scala
     object Get extends App with WS {
       import Async4sDSL._
 
