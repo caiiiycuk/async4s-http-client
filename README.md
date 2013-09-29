@@ -177,7 +177,7 @@ Configuring AsyncHttpClient
 Usually only one http client needed for whole application. For this case we should use singleton object with instance of ```AsyncHttpClient```:
 
 ```scala
-    private object HttpClient {
+    object HttpClient {
       private val configBuilder = new AsyncHttpClientConfig.Builder()
 
       configBuilder.setAllowPoolingConnection(true)
@@ -224,7 +224,7 @@ For example if you use Akka:
 ```scala
     import com.github.caiiiycuk.async4s.util.ExecutorService
     
-    private object HttpClient2 {
+    object HttpClient {
       private val configBuilder = new AsyncHttpClientConfig.Builder()
       //...
       configBuilder.setExecutorService(ExecutorService(MyActorSystem.dispatcher))
