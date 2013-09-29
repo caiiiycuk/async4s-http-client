@@ -2,6 +2,13 @@ async4s-http-client
 ===================
 A scala dsl on top of java [async-http-client](https://github.com/AsyncHttpClient/async-http-client)
 
+[Using with sbt](#using-with-sbt)  
+[GET requests](#get)  
+[POST requests](#post)  
+[Working with parameters](#working-with-parameters)  
+[Custom response parsers](#custom-response-parsers)  
+[Getting raw response](#getting-raw-response)
+
 Using with SBT
 ==============
 
@@ -112,8 +119,8 @@ When you use POST method request parameters will be passed in request body. When
 GET method request parameters will be passed in request uri (for this example uri will be 
 "http://url?user=caiiiycuk&token=abcdedwqsdq&array=1&array=2&array=3").
 
-Custom response parser
-======================
+Custom response parsers
+=======================
 
 You can define own response types throught subclassing from ```ResponseType[T]```:
 
@@ -142,8 +149,8 @@ You can define own response types throught subclassing from ```ResponseType[T]``
     httpClient.close
 ```
 
-Using com.ning.http.client.Response
-===================================
+Getting raw response
+====================
 
 You can use ```RAW``` response type to get ```com.ning.http.client.Response```:
 
