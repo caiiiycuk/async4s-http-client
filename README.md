@@ -30,6 +30,8 @@ Easiest way to get full content by url:
     // google should include("google")
     // bing should include("bing")
     // yahoo should include("yahoo")
+    
+    httpClient.close
 ```
 
 Also you can use builtin response type modifiers (```STRING```, ```BYTES```, ```STREAM``` or ```RAW```):
@@ -48,6 +50,8 @@ Also you can use builtin response type modifiers (```STRING```, ```BYTES```, ```
     // type of google is String
     // type of bing is Array[Byte]
     // type if yahoo is InputStream
+    
+    httpClient.close
 ```
 
 Method ```get``` take up to five urls. It will download content in parallel mode and return 
@@ -71,6 +75,8 @@ Also you can pass Seq of request to ```get``` method:
       
     // type of responses is Seq[String]
     // because we pass Seq[RequestUrl[String]]
+    
+    httpClient.close
 ```
 
 POST
@@ -85,6 +91,8 @@ You can send post requests absolute in the same way as get, through methods ```p
 
     val response =
       post("http://url")
+    
+    httpClient.close
 ```
 
 Working with parameters
@@ -130,6 +138,8 @@ You can define own response types throught subclassing from ```ResponseType[T]``
 
     // type of response is MyType
     // response.body should include("google")
+    
+    httpClient.close
 ```
 
 Using com.ning.http.client.Response
@@ -148,4 +158,6 @@ You can use ```RAW``` response type to get ```com.ning.http.client.Response```:
       
     // google.getContentType should equal ("text/html; charset=UTF-8")
     // google.getResponseBody should include("google")
+    
+    httpClient.close
 ```
