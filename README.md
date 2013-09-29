@@ -8,7 +8,8 @@ A scala dsl on top of java [async-http-client](https://github.com/AsyncHttpClien
 [Working with parameters](#working-with-parameters)  
 [Custom response parsers](#custom-response-parsers)  
 [Getting raw response](#getting-raw-response)  
-[Configuring AsyncHttpClient](#configuring-asynchttpclient)
+[Configuring AsyncHttpClient](#configuring-asynchttpclient)  
+[Akka + AsyncHttpClient](#akka--asynchttpclient)
 
 Using with SBT
 ==============
@@ -213,4 +214,25 @@ After that we can simply write:
       HttpClient.close
     }
 ```
+
+Akka + AsyncHttpClient
+======================
+
+You can use any instance of ```scala.concurrent.ExecutionService``` as ExecutorService in AsyncHttpClient with wrapper. 
+For example if you use Akka:
+
+```scala
+    import com.github.caiiiycuk.async4s.util.ExecutorService
+    
+    private object HttpClient2 {
+      private val configBuilder = new AsyncHttpClientConfig.Builder()
+      //...
+      configBuilder.setExecutorService(ExecutorService(MyActorSystem.dispatcher))
+      //...
+      val client = new AsyncHttpClient(configBuilder.build())
+      def close = client.close
+    }
+```
+
+
 
