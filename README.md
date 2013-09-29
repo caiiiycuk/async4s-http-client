@@ -7,7 +7,8 @@ A scala dsl on top of java [async-http-client](https://github.com/AsyncHttpClien
 [POST requests](#post)  
 [Working with parameters](#working-with-parameters)  
 [Custom response parsers](#custom-response-parsers)  
-[Getting raw response](#getting-raw-response)
+[Getting raw response](#getting-raw-response)  
+[Configuring AsyncHttpClient](#configuring-asynchttpclient)
 
 Using with SBT
 ==============
@@ -168,3 +169,48 @@ You can use ```RAW``` response type to get ```com.ning.http.client.Response```:
     
     httpClient.close
 ```
+
+Configuring AsyncHttpClient
+===========================
+
+Usually only one http client needed for whole application. For this case we should use singleton object with instance of ```AsyncHttpClient```:
+
+```
+    private object HttpClient {
+      private val configBuilder = new AsyncHttpClientConfig.Builder()
+
+      configBuilder.setAllowPoolingConnection(true)
+      configBuilder.setMaximumConnectionsTotal(100)
+      configBuilder.setConnectionTimeoutInMs(15000)
+      configBuilder.setRequestTimeoutInMs(15000)
+      configBuilder.setFollowRedirects(true)
+
+      val client = new AsyncHttpClient(configBuilder.build())
+      def close = client.close
+    }
+```
+
+Now we can define a trait with implicit variable of ExecutionContext and AsyncHttpClient:
+```
+    trait WS {
+      implicit val ec = ExecutionContext.Implicits.global
+      implicit val httpClient = HttpClient.client
+    }
+```
+
+After that we can simply write:
+```
+    object Get extends App with WS {
+      import Async4sDSL._
+
+      val (google, bing, yahoo) =
+        get("http://www.google.com", "http://www.bing.com", "http://www.yahoo.com")
+
+      // google should include("google")
+      // bing should include("bing")
+      // yahoo should include("yahoo")
+
+      HttpClient.close
+    }
+```
+
