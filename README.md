@@ -64,7 +64,7 @@ Also you can use builtin response type modifiers (```STRING```, ```BYTES```, ```
 ```
 
 Method ```get``` take up to five urls. It will download content in parallel mode and return 
-when all contents are downloaded. Also you can use async_get to download content in asynchronous mode 
+when all contents are downloaded. Also you can use ```async_get``` to download content in asynchronous mode 
 (it will return Future[T]).
 
 Also you can pass Seq of request to ```get``` method:
@@ -91,7 +91,7 @@ Also you can pass Seq of request to ```get``` method:
 POST
 ====
 
-You can send post requests absolute in the same way as get, through methods ```post``` and ```async post```.
+You can send post requests absolutely in the same way as get, through methods ```post``` and ```async post```.
 ```scala
     import Async4sDSL._
 
