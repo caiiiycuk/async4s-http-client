@@ -2,14 +2,14 @@ async4s-http-client
 ===================
 A scala dsl on top of java [async-http-client](https://github.com/AsyncHttpClient/async-http-client)
 
-[Using with sbt](#using-with-sbt)  
-[GET requests](#get)  
-[POST requests](#post)  
-[Working with parameters](#working-with-parameters)  
-[Custom response parsers](#custom-response-parsers)  
-[Getting raw response](#getting-raw-response)  
-[Configuring AsyncHttpClient](#configuring-asynchttpclient)  
-[Akka + AsyncHttpClient](#akka--asynchttpclient)
+* [Using with sbt](#using-with-sbt)  
+* [GET requests](#get)  
+* [POST requests](#post)  
+* [Working with parameters](#working-with-parameters)  
+* [Custom response parsers](#custom-response-parsers)  
+* [Getting raw response](#getting-raw-response)  
+* [Configuring AsyncHttpClient](#configuring-asynchttpclient)  
+* [Akka + AsyncHttpClient](#akka--asynchttpclient)
 
 Using with SBT
 ==============
