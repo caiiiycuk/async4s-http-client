@@ -17,7 +17,10 @@ class Params extends FlatSpec with ShouldMatchers {
 
   it should "convert pairs to params" in {
     val x: RequestUrl[String] =
-      "http://url" ~ ("user" -> "caiiiycuk") ~ ("token" -> "abcdedwqsdq") ~ ("array" -> Seq(1, 2, 3))
+      "http://url" ~ 
+      	("user" -> "caiiiycuk") ~ 
+      	("token" -> "abcdedwqsdq") ~ 
+      	("array" -> Seq(1, 2, 3))
     
     val first = x.params(0)
     val second = x.params(1)

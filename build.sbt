@@ -1,6 +1,6 @@
 name := "async4s-http-client"
 
-version := "0.2-SNAPSHOT"
+version := "0.3-SNAPSHOT"
 
 scalaVersion := "2.10.2"
 
@@ -35,5 +35,5 @@ publishTo := {
 
 credentials += Credentials("Sonatype Nexus Repository Manager",
                            "oss.sonatype.org",
-                           "caiiiycuk",
-                           "<password>")
+                           "",
+                           "")

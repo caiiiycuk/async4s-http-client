@@ -5,11 +5,6 @@ import com.github.caiiiycuk.async4s.response.ResponseType
 import java.util.HashMap
 import scala.collection.mutable.ListBuffer
 
-case class RequestParamKey(key: String) {
-  def ->(value: Any) =
-    RequestParam(key, value)
-}
-
 case class RequestParam(key: String, value: Any)
 
 case class RequestUrl[T](url: String, rType: ResponseType[T], 
