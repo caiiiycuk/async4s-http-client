@@ -7,8 +7,8 @@ scalaVersion := "2.10.2"
 organization := "com.github.caiiiycuk"
 
 
-resolvers ++= Seq("snapshots"     at "http://oss.sonatype.org/content/repositories/snapshots",
-                "releases"        at "http://oss.sonatype.org/content/repositories/releases"
+resolvers ++= Seq("snapshots"     at "https://oss.sonatype.org/content/repositories/snapshots",
+                "releases"        at "https://oss.sonatype.org/content/repositories/releases"
                 )
 
 libraryDependencies += "com.ning" % "async-http-client" % "1.7.9" % "compile"
